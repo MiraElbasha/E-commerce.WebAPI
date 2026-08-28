@@ -1,0 +1,25 @@
+﻿using E_Commerce.Domain.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace E_Commerce.Domain.Contracts
+{
+    public interface IGenericRepository<TEntity , TKey> where TEntity : BaseEntity<TKey>
+    {
+        //why to use IReadOnlyList --> so no chance to any edits to happens
+        Task<IReadOnlyList<TEntity>> GetAllAsync(CancellationToken ct = default);
+        Task<IReadOnlyList<TEntity>> GetAllAsync(ISpecifications<TEntity , TKey>Spec , CancellationToken ct = default);
+
+        Task<TEntity?> GetByIdAsync(TKey Id, CancellationToken ct = default);
+        Task<TEntity?> GetByIdAsync(ISpecifications<TEntity, TKey> Spec, CancellationToken ct = default);
+
+        void Add(TEntity entity);
+        void Update(TEntity entity);
+        void Remove(TEntity entity);
+
+        Task<int> CountAsync(ISpecifications<TEntity , TKey> Spec , CancellationToken ct = default);
+    }
+}

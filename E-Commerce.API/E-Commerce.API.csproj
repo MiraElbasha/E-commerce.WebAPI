@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>E_Commerce.API</RootNamespace>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Content Include="..\..\..\..\..\Aliaa Tarek\Data Access Layer\API\E_Commerce\E_Commerce.API\bin\Debug\net8.0\DataSeed\brands.json" Link="bin\Debug\net8.0\DataSeed\brands.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\..\..\Aliaa Tarek\Data Access Layer\API\E_Commerce\E_Commerce.API\bin\Debug\net8.0\DataSeed\products.json" Link="bin\Debug\net8.0\DataSeed\products.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\..\..\Aliaa Tarek\Data Access Layer\API\E_Commerce\E_Commerce.API\bin\Debug\net8.0\DataSeed\types.json" Link="bin\Debug\net8.0\DataSeed\types.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.30">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\E-Commerce.Application\E-Commerce.Application.csproj" />
+    <ProjectReference Include="..\E-Commerce.Infrastructure\E-Commerce.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
+
