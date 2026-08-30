@@ -40,6 +40,8 @@ namespace E_Commerce.Infrastructure
             #endregion
 
             services.AddScoped<IBasketService, BasketService>();
+            services.AddSingleton<ICasheRepository , CasheRepository>();
+            services.AddSingleton<ICasheService, CasheService>();
             return services;
         }
     }
