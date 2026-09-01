@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Application.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace E_Commerce.API.Controllers
 {
@@ -25,7 +26,7 @@ namespace E_Commerce.API.Controllers
             return ToProblem(result.Errors);
         }
 
-        internal static ObjectResult ToProblem(IReadOnlyList<Error> errors)
+        private static ObjectResult ToProblem(IReadOnlyList<Error> errors)
         {
             var first = errors[0];
             var status = first.ErrorType switch
@@ -49,5 +50,9 @@ namespace E_Commerce.API.Controllers
 
             return new ObjectResult(Problem) { StatusCode = status};
         }
+
+        protected string GetEmailFromToken()
+            => User.FindFirstValue(ClaimTypes.Email)
+            ?? throw new UnauthorizedAccessException("No Email Claim Found");
     }
 }
