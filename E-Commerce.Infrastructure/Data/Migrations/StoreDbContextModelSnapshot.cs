@@ -151,7 +151,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Entities.Products.ProductBrand", b =>
@@ -168,7 +168,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductBrands");
+                    b.ToTable("ProductBrands", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Entities.Products.ProductType", b =>
@@ -185,7 +185,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductTypes");
+                    b.ToTable("ProductTypes", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Entities.Orders.Order", b =>
@@ -196,7 +196,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("E_Commerce.Domain.Entities.Orders.OrderAddress", "ShipToAddress", b1 =>
+                    b.OwnsOne("E_Commerce.Domain.Entities.Orders.Order.ShipToAddress#E_Commerce.Domain.Entities.Orders.OrderAddress", "ShipToAddress", b1 =>
                         {
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uniqueidentifier");
@@ -226,7 +226,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
 
                             b1.HasKey("OrderId");
 
-                            b1.ToTable("Orders");
+                            b1.ToTable("Orders", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");
@@ -245,7 +245,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.OwnsOne("E_Commerce.Domain.Entities.Orders.ProductItemOrdered", "Product", b1 =>
+                    b.OwnsOne("E_Commerce.Domain.Entities.Orders.OrderItem.Product#E_Commerce.Domain.Entities.Orders.ProductItemOrdered", "Product", b1 =>
                         {
                             b1.Property<int>("OrderItemId")
                                 .HasColumnType("int");
@@ -263,7 +263,7 @@ namespace E_Commerce.Infrastructure.Data.Migrations
 
                             b1.HasKey("OrderItemId");
 
-                            b1.ToTable("OrderItems");
+                            b1.ToTable("OrderItems", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderItemId");

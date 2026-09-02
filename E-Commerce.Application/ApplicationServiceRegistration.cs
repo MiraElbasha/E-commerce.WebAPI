@@ -20,7 +20,8 @@ namespace E_Commerce.Application
             services.AddSingleton<ICasheService, CasheService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IOrderService, OrderService>();
-           
+            services.AddScoped<IPaymentService, PaymentService>();
+
             return services;
         }
     }

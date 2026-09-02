@@ -1,6 +1,7 @@
 
 using E_Commerce.API.Extensions;
 using E_Commerce.Application;
+using E_Commerce.Application.Common;
 using E_Commerce.Infrastructure;
 using Microsoft.Extensions.FileProviders;
 
@@ -21,6 +22,7 @@ namespace E_Commerce.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.Configure<PaymentGatwaySettings>(builder.Configuration.GetSection("Stripe"));
             var app = builder.Build();
            await app.SeedDataBaseAsync();
 

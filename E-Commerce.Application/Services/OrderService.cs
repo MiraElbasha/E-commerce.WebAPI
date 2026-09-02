@@ -28,6 +28,9 @@ namespace E_Commerce.Application.Services
 
             var orderRepo = unitOfWork.GetRepository<Order, Guid>();
             var productRepo = unitOfWork.GetRepository<Product, int>();
+            var existingOrder = await orderRepo.GetByIdAsync(new PaymentIntentSpec(basket.PaymentIntentId), ct);
+            if (existingOrder != null)
+                orderRepo.Remove(existingOrder);
 
             var productIds = basket.Items.Select(i => i.Id).ToHashSet();
             var products = (await productRepo.GetAllAsync(new ProductWithIdsSpecifications(productIds), ct)).ToDictionary(x => x.Id);
